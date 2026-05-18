@@ -1,0 +1,34 @@
+# Script básico de práctica en PowerShell
+
+Clear-Host
+Write-Host "=== PRACTICA BASICA EN POWERSHELL ==="
+
+# 1. Crear una carpeta
+$carpeta = "PruebaPS"
+New-Item -ItemType Directory -Path $carpeta -Force
+Write-Host "Carpeta '$carpeta' creada."
+
+# 2. Crear un archivo dentro de la carpeta
+$archivo = "$carpeta\mensaje.txt"
+"Hola desde PowerShell" | Out-File $archivo
+Write-Host "Archivo 'mensaje.txt' creado."
+
+# 3. Mostrar el contenido del archivo
+Write-Host "`nContenido del archivo:"
+Get-Content $archivo
+
+# 4. Crear una subcarpeta
+$sub = "$carpeta\Datos"
+New-Item -ItemType Directory -Path $sub -Force
+Write-Host "`nSubcarpeta 'Datos' creada."
+
+# 5. Mover el archivo a la subcarpeta
+Move-Item -Path $archivo -Destination $sub
+Write-Host "Archivo movido a 'Datos'."
+
+# 6. Listar contenido final
+Write-Host "`nContenido final de la carpeta:"
+Get-ChildItem $carpeta
+
+Write-Host "`n=== Script finalizado ==="
+Pause
